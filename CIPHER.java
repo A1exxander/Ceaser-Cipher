@@ -23,7 +23,7 @@ public class CIPHER
          System.out.println("Enter a string you'd like to be encoded");
          String text = KB.nextLine();
          return text;
-         //System.out.println("Now enter an offset ");
+         //System.out.println("Now enter an offset "); // Beter in its own function
          //offset = KB.nextInt();           
        }
        
