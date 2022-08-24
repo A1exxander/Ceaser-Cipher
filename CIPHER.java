@@ -1,43 +1,44 @@
-import java.util.Scanner;
+import javax.swing.*;
+import java.lang.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
 
-public class CIPHER
+public class MainFrame extends JFrame{
 
-{
-           public static void main(String[] args)     {
-           
-           Scanner KB = new Scanner(System.in);
-           String text = "";  
-           int offset = 0;
-           
-           text = inputString();
-           offset = inputOffset();
-                      
-           System.out.println("Encoded String : " + encoder(text,offset));
-                    
-                    
-       }
-       
-       public static String inputString()
-       {
-         Scanner KB = new Scanner(System.in);
-         System.out.println("Enter a string you'd like to be encoded");
-         String text = KB.nextLine();
-         return text;
-         //System.out.println("Now enter an offset "); // Beter in its own method!
-         //offset = KB.nextInt();           
-       }
-       
-       public static int inputOffset()
-       {
-         Scanner KB = new Scanner(System.in);
-         System.out.println("Enter a string you'd like to be encoded");
-         int offset = KB.nextInt();
-         return offset;        
-       }
+    private String text;
+    private int offset;
 
-       
-       public static String encoder(String text, int offset)
-       {
+    private JLabel Ttext;
+    private JTextField TFText;
+    private JButton CIPHER;
+    private JPanel MainFrame;
+    private JLabel Toffset;
+    private JTextField TBoffset;
+
+    MainFrame(){
+
+        setTitle("Ceaser Cipher");
+        setSize(500, 250);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setContentPane(MainFrame);
+        setVisible(true);
+
+        CIPHER.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                text = TFText.getText();
+                offset = Integer.parseInt(TBoffset.getText());
+                encodeString();
+
+            }
+        });
+
+    }
+    
+    public String encodeString(){
         
         char cyper = ' ';
         String encodedString = "";
@@ -59,11 +60,26 @@ public class CIPHER
       
            encodedString = encodedString.concat("" + cyper); // Concats a string to encodedString. Takes whatevers stored in encodedString and adds Cyper to the end of it each loop. If you wanted to concat a hardcoded string each line, you could put it inside the ""
            
-           
            }
-
        
        return encodedString;
-       }
        
+       }
+
+    private void printText() {
+
+        if (text == null) {
+            return;
+        }
+
+        else {           
+            JOptionPane.showMessageDialog(null, encodeString());
+        }
+    }
+    public static void main(String[] args){
+
+        MainFrame MF = new MainFrame();
+
+    }
+
 }
