@@ -31,7 +31,7 @@ public class MainFrame extends JFrame{
 
                 text = TFText.getText();
                 offset = Integer.parseInt(TBoffset.getText());
-                encodeString();
+                printString();
 
             }
         });
